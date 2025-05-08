@@ -1,0 +1,17 @@
+button {
+    background-color:lawngreen;
+    height: 50px;
+    transition: 2s;
+  }
+  
+button:hover {
+background-color: aqua;
+outline: 5px solid black;
+padding-inline: 50px;
+}
+
+.container {
+    transition: 2s;
+    background-color: red;
+    
+}
