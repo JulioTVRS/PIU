@@ -2,21 +2,14 @@ import "./EscopoReduz.css"
 
 const EscopoReduz = () => {
     function handleClick() {
-        return (
-            alert("Handleclick")
-        )
+        const randomColor = "#" + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
+
+        document.body.style.backgroundColor = randomColor;
     }
     return (
         <>
-            <button onClick={() => console.log("Você clicou!")}>Clique</button>
             <div>
-                <button onClick={() => alert("Você clicou!")}>Alert</button>
-            </div>
-            <div>
-                <button onClick={handleClick}>Handle</button>
-            </div>
-            <div className="container" onClick={() => alert("container")}>
-                <p>Container</p>
+                <button onClick={handleClick}>Mudar cor</button>
             </div>
         </>
     )
