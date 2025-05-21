@@ -2,7 +2,7 @@ import { useState } from "react";
 
 export default function Info1V() {
   const [valor, setValor] = useState(8);
-  const [mostrar, setMostrar] = useState(true);
+  const [mostrar, setMostrar] = useState(false);
 
   function numeric() {
     setValor(valor + 1);
@@ -20,15 +20,14 @@ export default function Info1V() {
         {mostrar ? "Esconder" : "Mostrar"}
       </button>
 
-      {mostrar && (
+      {mostrar ? (
         <div>
-        <p>Esse é um texto que aparece e desaparece com o botão acima.</p>
         <img 
           src="rat.jpg" 
           alt="Imagem de exemplo" 
         />
       </div>
-      )}
+      ) : ""}
     </div>
   );
 }
