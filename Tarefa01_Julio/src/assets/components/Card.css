@@ -1,0 +1,23 @@
+img {
+    width: 100px;
+    height: 150px;
+    transition: .2s;
+}
+
+img:hover {
+    height: 180px;
+    width: 130px;
+}
+
+figure {
+    padding: 20px;
+    height: 200px;
+}
+
+.Card {
+    background-color: rgb(146, 184, 218);
+    height: 250px;
+    margin-inline: 10px;
+    border-radius: 15px;
+}
+
