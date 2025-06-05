@@ -14,15 +14,15 @@ export default function DropDown() {
                 Dropdown {aberto ? '▲' : '▼'}
             </button>
 
-            {aberto && (
-                <ul style={{ listStyle: 'none', padding: 0, marginTop: '10px' }}>
+            {aberto ? (
+                <ul class="Dropdown" style={{ listStyle: 'none', padding: 0, marginTop: '10px' }}>
                     {topicos.map((topico, index) => (
                         <li key={index} style={{ fontSize: '25px', padding: '5px 0' }}>
                             {topico}
                         </li>
                     ))}
                 </ul>
-            )}
+            ) : ""}
         </div>
     );
 }
