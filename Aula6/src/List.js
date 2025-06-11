@@ -1,1 +1,1 @@
-export const ToDo = ["Comprar feira", "Arrumar a cama", "Trocar cano da pia"]
+export const ToDo = ["Comprar feira", "Arrumar a cama", "Trocar cano da pia", "Levantar um muro"]

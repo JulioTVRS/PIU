@@ -1,44 +1,13 @@
-.ToDoList {
-    width: 400px;
-    height: 500px;
-    margin: 0 auto;
-    font-family: Arial, sans-serif;
-    padding: 50px;
-    background-color: rgb(79, 175, 87);
-    border-radius: 5px;
-  }
   
 .ToDoContainer {
+    display: flex;
+    flex-direction: column;
     width: 90%;
     height: 70%;
     margin-top: 16px;
     background-color: rgb(151, 209, 136);
     padding: 15px;
     border-radius: 3px;
-}
-  
-.ListItem {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background-color: rgb(202, 233, 184);
-    padding: 10px;
-    margin-bottom: 12px;
-    border-radius: 3px;
-    transition: .5s;
-}
-
-.ListItem:hover {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background-color: rgb(202, 233, 184);
-    padding: 15px;
-    margin-bottom: 12px;
-    border-radius: 3px;
-}
-  
-.ListItem p {
-    margin: 0;
+    gap: 10px;
 }
   
