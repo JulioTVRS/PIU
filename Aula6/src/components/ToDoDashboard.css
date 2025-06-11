@@ -1,0 +1,74 @@
+.ToDoList {
+    width: 400px;
+    height: 500px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color: rgb(79, 175, 87);
+    border-radius: 8px;
+    color: black;
+}
+
+.ToDoContainer {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    height: 70%;
+    margin-top: 16px;
+    background-color: rgb(151, 209, 136);
+    padding: 15px;
+    border-radius: 3px;
+    gap: 10px;
+}
+
+.Item {
+    color: black;
+    transition: 0.5s;
+}
+
+.Item:hover {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: rgb(202, 233, 184);
+    padding: 1px;
+    margin: 1px;
+    border-radius: 1px;
+}
+
+.ItemButton {
+    border-radius: 3px;
+    height: 40px;
+    background-color: rgb(79, 175, 87);
+}
+
+.ListItem {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    gap: 8px;
+    background-color: rgb(202, 233, 184);
+    padding: 10px;
+    border-radius: 3px;
+}
+
+.ListItem p {
+    margin: 0;
+}
+
+.ItemContainer {
+    gap: 5px;
+    align-items: center;
+}
+
+.ToDoList.dark {
+  background-color: #333;
+  color: #f2f2f2;
+  transition: .2s;
+}
+
+.ToDoList.dark .ToDoContainer { background-color: #444; }
+.ToDoList.dark .Item { color: #f2f2f2; }
+.ToDoList.dark .Item:hover { background-color: #555; }
+.ToDoList.dark .ItemButton { background-color: #555; color: #f2f2f2}
+.ToDoList.dark .ListItem { background-color: #555; }

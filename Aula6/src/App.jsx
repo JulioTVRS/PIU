@@ -1,15 +1,27 @@
 import { useState } from 'react'
 import './App.css'
 import ToDoList from './components/ToDoList'
+import ToDoDashboard from './components/ToDoDashboard'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [darkMode, setDarkMode] = useState(false);
+
+  function toggleTheme() {
+    setDarkMode(!darkMode);
+  }
 
   return (
     <>
-      <ToDoList/>
+      <button onClick={toggleTheme} style={{margin: '15px'}}>
+        {darkMode ? '☀️ Light Mode' : '🌙 Dark Mode'}
+      </button>
+    
+      <ToDoDashboard darkMode={darkMode}>
+        <ToDoList/>
+      </ToDoDashboard>
     </>
-  )
+  );
 }
+
 
 export default App
