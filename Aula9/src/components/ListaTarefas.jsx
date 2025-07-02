@@ -10,7 +10,7 @@ export default function ListaTarefas() {
 
         if (tarefa.texto.trim() !== "") {
             // Adiciona uma cópia do objeto tarefa
-            setTarefas([...tarefas, { ...tarefa }]);
+            setTarefas([...tarefas, tarefa]);
             setTarefa({ texto: "", estado: "pendente" }); // reseta input
         }
     };
@@ -28,14 +28,7 @@ export default function ListaTarefas() {
 
             <form onSubmit={handleSubmit}>
                 <label>
-                    <input
-                        type="text"
-                        placeholder="Nome da tarefa"
-                        onChange={(e) =>
-                            setTarefa({ ...tarefa, texto: e.target.value })
-                        }
-                        value={tarefa.texto}
-                    />
+                    <input type="text" placeholder="Nome da tarefa" onChange={(e) => setTarefa({ ...tarefa, texto: e.target.value })} value={tarefa.texto}/>
                 </label>
 
                 <input type="submit" value="Enviar" />
@@ -56,14 +49,10 @@ export default function ListaTarefas() {
                 >
                     <p style={{ margin: 0 }}>{item.texto}</p>
                     <div>
-                        <button
-                            className="TarefaButton"
-                            onClick={() => atualizarEstado(index, "concluido")}
-                        >
+                        <button className="TarefaButton" onClick={() => atualizarEstado(index, "concluido")}>
                             ✔
                         </button>
-                        <button className="TarefaButton" onClick={() => atualizarEstado(index, "naoconcluido")}
-                        >
+                        <button className="TarefaButton" onClick={() => atualizarEstado(index, "naoconcluido")}>
                             X
                         </button>
                         <button className="TarefaButton" onClick={() => atualizarEstado(index, "pendente")}>
@@ -73,10 +62,7 @@ export default function ListaTarefas() {
                 </div>
             ))}
 
-            <button
-                onClick={() => setTarefas([])}
-                style={{ margin: "10px", padding: "5px 10px" }}
-            >
+            <button onClick={() => setTarefas([])} style={{ margin: "10px", padding: "5px 10px" }}>
                 Resetar
             </button>
         </div>
