@@ -3,15 +3,17 @@ import "./ListaTarefas.css";
 
 export default function ListaTarefas() {
     const [tarefas, setTarefas] = useState([]);
-    const [tarefa, setTarefa] = useState({ texto: "", estado: "pendente" });
+    const [tarefa, setTarefa] = useState({ texto: "", estado: "andamento" , data_criacao: new Date()});
+    const [tarefasFiltradas, setTarefasFiltradas] = useState(tarefas)
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
         if (tarefa.texto.trim() !== "") {
-            // Adiciona uma cópia do objeto tarefa
-            setTarefas([...tarefas, tarefa]);
-            setTarefa({ texto: "", estado: "pendente" }); // reseta input
+            const novasTarefas = [...tarefas, tarefa]
+            setTarefas(novasTarefas)
+            setTarefa({ ...tarefa, texto: "", estado: "andamento" })
+            setTarefasFiltradas(novasTarefas)
         }
     };
 
@@ -19,8 +21,22 @@ export default function ListaTarefas() {
         const novasTarefas = tarefas.map((item, i) =>
             i === index ? { ...item, estado: novoEstado } : item
         );
-        setTarefas(novasTarefas);
+        setTarefas(novasTarefas)
+        setTarefasFiltradas(novasTarefas)
     };
+    
+    const atualizarFiltro = (tipoFiltro) => {
+        if (tipoFiltro === "all") {
+            setTarefasFiltradas(tarefas)
+        } else if (tipoFiltro === "concluido") {
+            setTarefasFiltradas(tarefas.filter(trf => trf.estado === "concluido"))
+        } else if (tipoFiltro === "andamento"){
+            setTarefasFiltradas(tarefas.filter(trf => trf.estado === "andamento"))
+        } else if (tipoFiltro === "naoconcluido"){
+            setTarefasFiltradas(tarefas.filter(trf => trf.estado === "naoconcluido"))
+        }
+    };
+
 
     return (
         <div>
@@ -32,22 +48,25 @@ export default function ListaTarefas() {
                 </label>
 
                 <input type="submit" value="Enviar" />
+
+                
             </form>
 
-            {tarefas.map((item, index) => (
+            <button onClick={() => atualizarFiltro("concluido")}>Filtrar por concluídas</button>
+            <button onClick={() => atualizarFiltro("andamento")}>Filtrar por em andamento</button>
+            <button onClick={() => atualizarFiltro("naoconcluido")}>Filtrar por não concluídas</button>
+            <button onClick={() => atualizarFiltro("all")}>Remover filtro</button>
+
+            {tarefasFiltradas.map((item, index) => (
                 <div
-                    key={index}
-                    className="Tarefa"
-                    style={{
-                        backgroundColor:
-                            item.estado === "pendente"
-                                ? "yellow"
+                    key={index} className="Tarefa"
+                    style={{backgroundColor: item.estado === "andamento"
+                                ? "lightgray"
                                 : item.estado === "concluido"
                                 ? "lightgreen"
                                 : "lightcoral"
-                    }}
-                >
-                    <p style={{ margin: 0 }}>{item.texto}</p>
+                    }}>
+                    <p style={{ margin: 0 }}>{item.texto} - {new Date(item.data_criacao).toLocaleString("pt-BR")}</p>
                     <div>
                         <button className="TarefaButton" onClick={() => atualizarEstado(index, "concluido")}>
                             ✔
@@ -55,14 +74,14 @@ export default function ListaTarefas() {
                         <button className="TarefaButton" onClick={() => atualizarEstado(index, "naoconcluido")}>
                             X
                         </button>
-                        <button className="TarefaButton" onClick={() => atualizarEstado(index, "pendente")}>
+                        <button className="TarefaButton" onClick={() => atualizarEstado(index, "andamento")}>
                             🚶
                         </button>
                     </div>
                 </div>
             ))}
 
-            <button onClick={() => setTarefas([])} style={{ margin: "10px", padding: "5px 10px" }}>
+            <button onClick={() => {setTarefas([]); setTarefasFiltradas([])}} style={{ margin: "10px", padding: "5px 10px" }}>
                 Resetar
             </button>
         </div>
